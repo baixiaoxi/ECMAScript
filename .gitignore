@@ -1,0 +1,36 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+bash.exe.stackdump
+
+# dist files
+**/dist/
+
+# Dependency directory
+node_modules
+
+.DS_Store
+node/
+**/target
+
+# js
+node_modules/
+**/dist/**
+**/js_reports/**
+
+# VSCode history plugin
+.history
+
+**.idea
+.vscode
+.metadata
+.checkstyle
+*.ipr
+*.iml
+*.iws
+.settings/
+.project
+.classpath
+.history
+.repo
