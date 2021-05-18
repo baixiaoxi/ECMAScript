@@ -1,3 +1,4 @@
+// generator，throw抛出异常
 function* inner() {
     try {
         yield "something";

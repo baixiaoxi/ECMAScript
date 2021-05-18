@@ -1,3 +1,4 @@
+// 显式调用iterator
 const a = ["a", "b", "c"];
 const it = a[Symbol.iterator]();
 let result;

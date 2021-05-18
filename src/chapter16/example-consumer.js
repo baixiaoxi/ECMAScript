@@ -1,3 +1,4 @@
+// 共享内存示例。消费者
 import {log, setLogging} from "./example-misc.js";
 import {LockingInt32Queue} from "./locking-int32-queue.js";
 
@@ -22,10 +23,10 @@ const now = typeof performance !== "undefined" && performance.now
                 : Date.now.bind(Date);
 
 // An array we use to wait within `calculateHash`, see below
-const a = new Int32Array(new SharedArrayBuffer(Int32Array.BYTES_PER_ELEMENT));
+const a = new Int32Array(new SharedArrayBuffer(Int32Array.BYTES_PER_ELEMENT));// 模拟全速处理
 
 // Calculates the hash for the given buffer.
-function calculateHash(buffer) {
+function calculateHash(buffer) {// 计算哈希值
     // A real hash calculation like SHA-256 or even MD5 would take much longer than
     // the below, so after doing the basic XOR hash (which isn't a reliable hash,
     // it's just to keep things simple), this code waits a few milliseconds to
@@ -43,25 +44,25 @@ function calculateHash(buffer) {
 // to yield briefly to the event loop in order to receive any pending messages.
 function processBuffers() {
     const yieldAt = Date.now() + 500;
-    while (running) {
+    while (running) {// 循环处理待哈希数据池
         log(logId, "Getting buffer to process");
         let waitStart = now();
-        const bufferId = pendingBuffersQueue.take();
+        const bufferId = pendingBuffersQueue.take();// 取待哈希的数据池
         let elapsed = now() - waitStart;
         log(logId, `Got bufferId ${bufferId} (elapsed: ${elapsed})`);
-        if (bufferId === -1) {
+        if (bufferId === -1) {// 生产者让停
             // This is a flag from the producer that this consumer should stop
             actions.stop();
             break;
         }
         log(logId, `Hashing buffer ${bufferId}`);
         const hash = calculateHash(buffers[bufferId]);
-        postMessage({type: "hash", consumerId, bufferId, hash});
+        postMessage({type: "hash", consumerId, bufferId, hash});// 向主线程发送哈希结果
         waitStart = now();
-        availableBuffersQueue.put(bufferId);
+        availableBuffersQueue.put(bufferId);// 主线程处理完后，这个数据池可以给消费者继续使用
         elapsed = now() - waitStart;
         log(logId, `Done with buffer ${bufferId} (elapsed: ${elapsed})`);
-        if (Date.now() >= yieldAt) {
+        if (Date.now() >= yieldAt) {// 每500ms暂停一下，处理消息
             log(logId, `Yielding to handle messages`);
             setTimeout(processBuffers, 0);
             break;
@@ -72,7 +73,7 @@ function processBuffers() {
 // Handle messages, take appropriate action
 const actions = {
     // Initialize this consumer with data from the message
-    init(data) {
+    init(data) {// 初始化消息
         ({consumerId, buffers, fullspeed} = data);
         setLogging(!fullspeed);
         logId = `consumer${consumerId}`;
@@ -85,7 +86,7 @@ const actions = {
         processBuffers();
     },
     // Stop this consumer
-    stop() {
+    stop() {// 停止信息
         if (running) {
             running = false;
             log(logId, "Stopped");

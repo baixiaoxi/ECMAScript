@@ -1,3 +1,4 @@
+// for是code unit级别遍历，for-of是code point级别遍历。但是对于一些多个code point组成的单一字符，for-of也是无效的，需要更复杂的算法来处理
 // Note: This file is encoded in UTF-8. Your system may or may not have a different default encoding.
 
 for (const ch of ">😊<") {

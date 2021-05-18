@@ -1,3 +1,4 @@
+// 数组解构
 const arr = [1, 2];
 let first, second;
 [first, second] = arr;

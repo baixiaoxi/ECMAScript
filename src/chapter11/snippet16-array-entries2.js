@@ -1,3 +1,4 @@
+// Array.entries
 const a = ["one", "two", "three"];
 for (const [index, value] of a.entries()) {
     console.log(index, value);

@@ -1,3 +1,4 @@
+// module
 import { log } from "./dynamic-mod-log.js";
 
 log("showtime module evaluated");

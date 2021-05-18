@@ -1,3 +1,4 @@
+// tagged template literals
 function emulateUntagged(template, ...values) {
     return template.reduce((acc, str, index) => acc + values[index - 1] + str);
 }

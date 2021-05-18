@@ -1,3 +1,4 @@
+// tag function and template literals。使用reduce连接template数组
 const logJSON = (template, ...values) => {
     const result = template.reduce((acc, str, index) =>
         acc + JSON.stringify(values[index - 1]) + str

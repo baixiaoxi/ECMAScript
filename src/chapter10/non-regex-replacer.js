@@ -1,3 +1,4 @@
+// Symbol.replace自定义替换函数。原来的string.replace不能使用正则表达式，但现在正则表达式透过Symbol.replace机制，也开始支持replace了
 // Note: This file is encoded in UTF-8. Your system may or may not have a different default encoding.
 
 // Defining the token replacer with configurable token matching

@@ -1,3 +1,4 @@
+// module
 import { log } from "./dynamic-mod-log.js";
 import { showTime } from "./dynamic-mod-showtime.js";
 

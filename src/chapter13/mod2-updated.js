@@ -1,3 +1,4 @@
+// 模块。named export和default export
 import { fn1, indent } from "./mod1.js";
 
 console.log(`${indent(0)}hi there`);

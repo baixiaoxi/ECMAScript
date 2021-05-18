@@ -1,3 +1,5 @@
+// 队列
+
 // Ring buffer implementation drawn in part from
 // https://www.snellman.net/blog/archive/2016-12-13-ring-buffers/
 // Note that it relies on Uint32 wrap-around from 2**32-1 to 0
@@ -15,7 +17,7 @@ const TAIL = 1;
  *
  * @param {number} capacity The size of the queue
  */
-function validateCapacity(capacity) {
+function validateCapacity(capacity) {// 检查大小是否2的指数
     const capLog2 = Math.log2(capacity);
     if (capLog2 !== (capLog2|0)) {
         throw new Error(
@@ -32,7 +34,7 @@ function validateCapacity(capacity) {
  * @param   {number}    n   The number to convert.
  * @returns The result.
  */
-function toUint32(n) {
+function toUint32(n) {// 类型转换
     // The unsigned right-shift operator converts its operands to Uint32 values,
     // so shifting `n` by 0 places converts it to Uint32 (and then back to number)
     return n >>> 0;
@@ -48,7 +50,7 @@ function toUint32(n) {
  * @param   {LockingInt32Queue} queue   The queue to get the size of.
  * @returns The number of unconsumed entries in the queue.
  */
-function size(queue) {
+function size(queue) {// 队列大小
     // Conversion to Uint32 (briefly) handles the necessary wrap-around so that
     // when the head index is (for instance) 1 and the tail index is (for
     // instance) 4294967295, the result is 2 (there's an entry at index
@@ -63,7 +65,7 @@ function size(queue) {
  * @param   {LockingInt32Queue} queue   The queue to check.
  * @returns `true` if the queue is full, `false` if not.
  */
-function full(queue) {
+function full(queue) {// 队列是否满
     return size(queue) === queue.data.length;
 }
 
@@ -74,7 +76,7 @@ function full(queue) {
  * @param   {LockingInt32Queue} queue   The queue to check.
  * @returns `true` if the queue is full, `false` if not.
  */
-function empty(queue) {
+function empty(queue) {// 队列是否空
     return queue.indexes[HEAD] === queue.indexes[TAIL];
 }
 
@@ -84,7 +86,7 @@ function empty(queue) {
  *
  * @param {number} v The value to check.
  */
-function checkValue(v) {
+function checkValue(v) {// 检查数值
     if (typeof v !== "number" || (v|0) !== v) {
         throw new Error(
             "Queue values must be integers between -(2**32) and 2**32-1, inclusive"
@@ -100,7 +102,7 @@ function checkValue(v) {
  * @param   {LockingInt32Queue} queue   The queue to put the value in.
  * @param   {number}            value   The value to put.
  */
-function internalPut(queue, value) {
+function internalPut(queue, value) {// 入队
     queue.data[queue.indexes[HEAD] % queue.data.length] = value;
     ++queue.indexes[HEAD];
 }
@@ -110,19 +112,19 @@ function internalPut(queue, value) {
  * blocks until there's room in the queue and whose `take` method blocks until
  * there's an entry in the queue to return.
  */
-export class LockingInt32Queue {
+export class LockingInt32Queue {// 队列定义
     /**
      * Gets the number of bytes this queue implementation requires within a
      * `SharedArrayBuffer` to support a queue of the given capacity.
      *
      * @param   {number}    capacity    The desired queue capacity.
      */
-    static getBytesNeeded(capacity) {
+    static getBytesNeeded(capacity) {// 队列需要的内存空间大小
         validateCapacity(capacity);
-        const bytesNeeded = Lock.BYTES_NEEDED +
-                            (Condition.BYTES_NEEDED * 2) +
-                            (Uint32Array.BYTES_PER_ELEMENT * 2) +
-                            (Int32Array.BYTES_PER_ELEMENT * capacity);
+        const bytesNeeded = Lock.BYTES_NEEDED +// 一个锁
+                            (Condition.BYTES_NEEDED * 2) + // 两个条件，有空闲池和有数据池条件
+                            (Uint32Array.BYTES_PER_ELEMENT * 2) +// 队列头和尾指示, Head & Tail
+                            (Int32Array.BYTES_PER_ELEMENT * capacity);// 八个数据池ID队列空间
         return bytesNeeded;
     }
 
@@ -157,7 +159,7 @@ export class LockingInt32Queue {
                     "omitted or `null`"
                 );
             }
-            sab = new SharedArrayBuffer(byteOffset + bytesNeeded);
+            sab = new SharedArrayBuffer(byteOffset + bytesNeeded);// 重新构造一个共享内存池
         }
         // Offset must be an integer identifying a position within the buffer,
         // divisible by four because we use an Int32Array so we can use
@@ -167,7 +169,7 @@ export class LockingInt32Queue {
             || byteOffset % 4 !== 0
             || byteOffset < 0
             || byteOffset + bytesNeeded > sab.byteLength
-        ) {
+        ) {// 检查数据
             throw new Error(
                 `\`byteOffset\` must be an integer divisible by 4 and ` +
                 `identify a buffer location with ${bytesNeeded} of room`
@@ -177,26 +179,26 @@ export class LockingInt32Queue {
         // Create the lock and conditions
         this.byteOffset = byteOffset;
         let n = byteOffset;
-        this.lock = new Lock(sab, n);
+        this.lock = new Lock(sab, n);// 第一个是锁
         n += Lock.BYTES_NEEDED;
-        this.hasWorkCondition = new Condition(this.lock, n);
+        this.hasWorkCondition = new Condition(this.lock, n);// 有满载数据池条件
         n += Condition.BYTES_NEEDED;
-        this.hasRoomCondition = new Condition(this.lock, n);
+        this.hasRoomCondition = new Condition(this.lock, n);// 有空闲数据池条件
         n += Condition.BYTES_NEEDED;
         // Create the indexes and data arrays
         this.indexes = new Uint32Array(sab, n, 2);
-        Atomics.store(this.indexes, HEAD, 0);
-        Atomics.store(this.indexes, TAIL, 0);
+        Atomics.store(this.indexes, HEAD, 0);// 队列头指示
+        Atomics.store(this.indexes, TAIL, 0);// 队列尾指示
         n += Uint32Array.BYTES_PER_ELEMENT * 2;
-        this.data = new Int32Array(sab, n, capacity);
-        if (initialEntries) {
+        this.data = new Int32Array(sab, n, capacity);// 队列数据空间
+        if (initialEntries) {// 有初始化的数据
             if (initialEntries.length > capacity) {
                 throw new Error(
                     `\`initialEntries\` has ${initialEntries.length} entries, ` +
                     `queue only supports ${capacity} entries`
                 );
             }
-            for (const value of initialEntries) {
+            for (const value of initialEntries) {// 直接写入初始化数据
                 checkValue(value);
                 internalPut(this, value);
             }
@@ -206,7 +208,7 @@ export class LockingInt32Queue {
     /**
      * The capacity of this queue.
      */
-    get capacity() {
+    get capacity() {// 队列大小
         return this.data.length;
     }
 
@@ -220,26 +222,26 @@ export class LockingInt32Queue {
      * @returns The size of the queue as of just after this value was put in (may
      *          be out of date the instant the caller receives it, though).
      */
-    put(value) {
+    put(value) {// 入队
         checkValue(value);
-        this.lock.lock();
+        this.lock.lock();// 上锁
         try {
             // If the queue is full, wait for the "queue has room" condition to
             // become true. Since waiting releases and reacquires the lock, after
             // waiting check again whether the queue is full in case another thread
             // snuck in and used up the space that became available before this
             // thread could use it.
-            while (full(this)) {
-                this.hasRoomCondition.wait();
+            while (full(this)) {// 队列已经满，只能等待了
+                this.hasRoomCondition.wait();// 先解锁，等待空闲条件，再上锁
             }
-            internalPut(this, value);
+            internalPut(this, value);// 入队
             const rv = size(this);
             // Notify one thread waiting in `take`, if any, that the queue has work
             // available now
-            this.hasWorkCondition.notifyOne();
+            this.hasWorkCondition.notifyOne();// 有数据可用，唤醒等待线程
             return rv;
         } finally {
-            this.lock.unlock();
+            this.lock.unlock();// 解锁
         }
     }
 
@@ -248,25 +250,25 @@ export class LockingInt32Queue {
      * returns the value. Waits forever for the lock and for the queue to have
      * at least one entry in it.
      */
-    take() {
-        this.lock.lock();
+    take() {// 出队
+        this.lock.lock();// 上锁
         try {
             // If the queue is empty, wait for the "queue has work" condition to
             // become true. Since waiting releases and reacquires the lock, after
             // waiting check again whether the queue is empty in case another
             // thread snuck in and took the work that was just added before this
             // thread could get it.
-            while (empty(this)) {
-                this.hasWorkCondition.wait();
+            while (empty(this)) {// 如果队列为空
+                this.hasWorkCondition.wait();// 先解锁，等待有数据条件，再上锁
             }
-            const value = this.data[this.indexes[TAIL] % this.data.length];
+            const value = this.data[this.indexes[TAIL] % this.data.length];// 取数据
             ++this.indexes[TAIL];
             // Notify one thread waiting in `put`, if any, that there's room for
             // a new entry in the queue now
-            this.hasRoomCondition.notifyOne();
+            this.hasRoomCondition.notifyOne();// 有空间可用，唤醒等待线程
             return value;
         } finally {
-            this.lock.unlock();
+            this.lock.unlock();// 解锁
         }
     }
 
@@ -276,7 +278,7 @@ export class LockingInt32Queue {
      *
      * @returns The object to use with `postMessage`.
      */
-    serialize() {
+    serialize() {// 序列化
         return {
             isLockingInt32Queue: true,
             lock: this.lock.serialize(),
@@ -294,7 +296,7 @@ export class LockingInt32Queue {
      * @param   {object} obj The serialized `Lock` object
      * @returns The `Lock` instance.
      */
-    static deserialize(obj) {
+    static deserialize(obj) {// 反序列化
         if (!obj || !obj.isLockingInt32Queue ||
             !(obj.indexes instanceof Uint32Array) ||
             !(obj.data instanceof Int32Array)

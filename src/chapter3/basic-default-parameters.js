@@ -1,3 +1,4 @@
+// 默认参数
 function animate(type, duration = 300) {
     console.log(type + ", " + duration);
 }

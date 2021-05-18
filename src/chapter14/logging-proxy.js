@@ -1,3 +1,4 @@
+// 代理。输出代理访问过程
 // See Chapter 14's "Example: Logging Proxy" for an explanation of the
 // `names` map and why `log` uses it.
 const names = new WeakMap();

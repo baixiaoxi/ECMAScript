@@ -1,3 +1,4 @@
+// Set遍历
 const s = new Set(["one", "two", "three"]);
 for (const value of s) {
     console.log(value);

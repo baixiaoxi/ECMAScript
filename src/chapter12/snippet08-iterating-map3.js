@@ -1,3 +1,4 @@
+// Map自带forEach
 const m = new Map([
     ["one", "uno"],
     ["two", "due"],

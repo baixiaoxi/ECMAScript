@@ -1,3 +1,4 @@
+// 字符串标准化。这样才能进行有意义的比较
 // Note: This file is encoded in UTF-8. Your system may or may not have a different default encoding.
 
 const f1 = "Français";

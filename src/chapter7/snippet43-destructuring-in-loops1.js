@@ -1,3 +1,4 @@
+// for-of对象解构
 const arr = [
     {name: "one", value: 1},
     {name: "two", value: 2},

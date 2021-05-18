@@ -1,3 +1,4 @@
+// 私有访问函数
 class Example {
     #cappedValue;
     constructor(value) {

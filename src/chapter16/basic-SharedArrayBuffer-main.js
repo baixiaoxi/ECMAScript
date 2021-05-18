@@ -1,3 +1,4 @@
+// SharedArrayBuffer，用postMessage传递transferables
 const sharedBuf = new SharedArrayBuffer(5 * Uint16Array.BYTES_PER_ELEMENT);
 const sharedArray = new Uint16Array(sharedBuf);
 const worker = new Worker("./basic-SharedArrayBuffer-worker.js");

@@ -1,3 +1,4 @@
+// dynamic module, 用import()导入
 (async() => {
     try {
         const {log} = await import("./dynamic-mod-log.js");

@@ -1,8 +1,9 @@
+// tag function and template literals。正则表达式匹配
 const createRegex = (template, ...values) => {
     // Build the source from the raw text segments and values
     const source = String.raw(template, ...values);
     // Check it's in /expr/flags form
-    const match = /^\/(.+)\/([a-z]*)$/.exec(source);
+    const match = /^\/(.+)\/([a-z]*)$/.exec(source);// 检查正则表达式是否有效
     if (!match) {
         throw new Error("Invalid regular expression");
     }

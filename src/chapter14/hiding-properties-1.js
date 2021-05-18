@@ -1,3 +1,4 @@
+// 代理。目标类型和常用trap定义，隐藏数据属性
 class Counter {
     constructor(name) {
         this._value = 0;

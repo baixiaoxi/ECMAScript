@@ -1,3 +1,4 @@
+// Object.entries使用
 const obj = {
     a: 1,
     b: 2,

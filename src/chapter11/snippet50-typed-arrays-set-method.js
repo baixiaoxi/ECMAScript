@@ -1,3 +1,4 @@
+// TypedArray.set赋值，不能指定范围，只能是全部数值一起赋值
 // ==== Prep for the snippet:
 
 const a1 = Uint8Array.of(1, 2, 3);

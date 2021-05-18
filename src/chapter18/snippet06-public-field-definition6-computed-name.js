@@ -1,3 +1,4 @@
+// 对外属性。可computed
 const sharedUsefulProperty = Symbol.for("usefulProperty");
 class Example {
     [sharedUsefulProperty] = "example";

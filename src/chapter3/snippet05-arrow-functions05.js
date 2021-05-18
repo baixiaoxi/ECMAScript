@@ -1,3 +1,4 @@
+// arrow function,function body
 const array = [42, 67, 3, 23, 14];
 array.sort((a, b) => {
     const aIsOdd = a % 2;

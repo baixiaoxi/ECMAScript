@@ -1,3 +1,4 @@
+// generator，yield*调用generator
 function* collect(count) {
     const data = [];
     if (count < 1 || Math.floor(count) !== count) {

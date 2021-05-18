@@ -1,3 +1,4 @@
+// 数组连接
 const a = ["one", "two"];
 const b = ["four", "five"];
 console.log(a.concat("three", b));

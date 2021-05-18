@@ -1,3 +1,4 @@
+// es5老式类型定义
 "use strict";
 var Color = function Color(r, g, b) {
     if (!(this instanceof Color)) {

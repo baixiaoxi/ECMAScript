@@ -1,3 +1,5 @@
+// 用WeakSet来使数据私有化，确保函数仅调用一次
+
 const SingleUseObject = (() => {
     const used = new WeakSet();
 

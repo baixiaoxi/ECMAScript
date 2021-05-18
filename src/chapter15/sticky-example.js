@@ -1,3 +1,4 @@
+// stick标志。判断在指定lastIndex处是否匹配
 function tryRex(rex, str) {
     console.log(`lastIndex: ${rex.lastIndex}`);
     const match = rex.exec(str);

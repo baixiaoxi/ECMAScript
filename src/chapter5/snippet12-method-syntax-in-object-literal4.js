@@ -1,3 +1,4 @@
+// 设置对象的prototype
 const obj = {
     toString() {
         return super.toString().toUpperCase();

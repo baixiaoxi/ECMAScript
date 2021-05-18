@@ -1,3 +1,4 @@
+// shorthand property
 function getMinMax(nums) {
     let min, max;
     // In a later chapter you'll learn about the `for-of` loop, which would

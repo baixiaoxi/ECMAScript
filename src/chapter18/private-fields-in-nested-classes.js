@@ -1,3 +1,4 @@
+// 内部的子域可以访问当前域的私有变量
 class Outer {
     #outerField;
     constructor(value) {

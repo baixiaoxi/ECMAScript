@@ -1,3 +1,4 @@
+// 模块
 import { fn1, indent } from "./mod1.js";
 
 export function fn2(nest = 0) {

@@ -1,3 +1,4 @@
+// iterable。function generator而不是method generator, 无法调用super
 const a = {
     0: "a",
     1: "b",

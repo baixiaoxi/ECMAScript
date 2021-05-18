@@ -1,3 +1,4 @@
+// async-await。async就相当于返回一个promise
 async function a() {
     return await Promise.resolve("a");
 }

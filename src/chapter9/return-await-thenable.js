@@ -1,3 +1,4 @@
+// async-await。async函数里的return语句不需要await，会再封装一个Promise，导致延迟一个tick调用
 function thenableResolve(value) {
     return {
         then(onFulfilled) {

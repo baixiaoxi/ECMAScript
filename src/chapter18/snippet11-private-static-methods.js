@@ -1,3 +1,4 @@
+// 私有静态方法
 class Example {
     static #log(...msgs) {
         console.log(`${new Date().toISOString()}:`, ...msgs);

@@ -1,3 +1,4 @@
+// 读取png数据到ArrayBuffer
 const PNG_HEADER = Uint8Array.of(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A);
 function isPNG(byteData) {
     return byteData.length >= PNG_HEADER.length &&

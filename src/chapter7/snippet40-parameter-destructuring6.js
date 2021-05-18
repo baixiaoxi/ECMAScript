@@ -1,3 +1,4 @@
+// 函数参数对象解构。默认值
 function example({a, b = 2}) {
     console.log(a, b);
 }

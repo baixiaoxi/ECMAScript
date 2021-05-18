@@ -1,3 +1,4 @@
+// Reflect.get获取继承到的accessor函数，指定this为绑定
 class Product {
     constructor(x, y) {
         this.x = x;

@@ -1,3 +1,4 @@
+// 构造对象，重置对象prototype
 const p1 = {
     greet: function() {
         console.log("p1 greet, name = " + this.name);

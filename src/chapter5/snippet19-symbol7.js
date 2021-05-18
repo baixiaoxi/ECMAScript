@@ -1,3 +1,4 @@
+// Symbol属性
 const everUpward = (() => {
     const count = Symbol("count");
     return {

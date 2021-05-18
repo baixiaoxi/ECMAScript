@@ -1,3 +1,5 @@
+// 共享内存示例入口
+
 // This example uses one producer worker and multiple consumer workers to calculate
 // hashes of data buffers. The work is managed using two queues. The queues and the
 // data buffers are all contained in a single `SharedArrayBuffer`. The producer
@@ -36,25 +38,25 @@ let hashesReceived = 0;
 // Create the SAB, the data buffers, and the queues. Again, since the data buffers
 // are byte arrays this code doesn't need to use `Uint8Array.BYTES_PER_ELEMENT`.
 let byteOffset = 0;
-const sab = new SharedArrayBuffer(bufferSize);
+const sab = new SharedArrayBuffer(bufferSize);// 所有的队列和数据池都是从一块内存中分配出来的
 const buffers = [];
-for (let n = 0; n < dataBufferCount; ++n) {
+for (let n = 0; n < dataBufferCount; ++n) {// 8块数据池在最前面
     buffers[n] = new Uint8Array(sab, byteOffset, dataBufferLength);
     byteOffset += dataBufferLength;
 }
-const availableBuffersQueue = new LockingInt32Queue(
+const availableBuffersQueue = new LockingInt32Queue(// 可用数据池ID队列。刚开始的时候8个池都是空的
     capacity, sab, byteOffset, [...buffers.keys()]
     //                         ^-- Initially, all the buffers are available
 );
-byteOffset += LockingInt32Queue.getBytesNeeded(capacity);
-const pendingBuffersQueue = new LockingInt32Queue(
+byteOffset += LockingInt32Queue.getBytesNeeded(capacity);// 计算队列长度
+const pendingBuffersQueue = new LockingInt32Queue(// 待哈希数据池ID队列
     capacity, sab, byteOffset // Initially empty
 );
 
 // Handle a message posted from a consumer.
-function handleConsumerMessage({data}) {
+function handleConsumerMessage({data}) {// 处理消费者消息
     const type = data && data.type;
-    if (type === "hash") {
+    if (type === "hash") {// 打印哈希值
         const {consumerId, bufferId, hash} = data;
         ++hashesReceived;
         log(
@@ -66,7 +68,7 @@ function handleConsumerMessage({data}) {
 }
 
 // Create the producer and the consumers, get them started
-const initMessage = {
+const initMessage = {// 初始化消息
     type: "init",
     availableBuffersQueue: availableBuffersQueue.serialize(),
     pendingBuffersQueue: pendingBuffersQueue.serialize(),
@@ -74,17 +76,17 @@ const initMessage = {
     fullspeed
 };
 const producer = new Worker("./example-producer.js", {type: "module"});
-producer.postMessage({...initMessage, consumerCount});
+producer.postMessage({...initMessage, consumerCount});// 向唯一的生产者发送初始化消息
 const consumers = [];
 for (let n = 0; n < consumerCount; ++n) {
     const consumer = consumers[n] =
         new Worker("./example-consumer.js", {type: "module"});
-    consumer.postMessage({...initMessage, consumerId: n});
+    consumer.postMessage({...initMessage, consumerId: n});// 向消费者发送初始化消息
     consumer.addEventListener("message", handleConsumerMessage);
 }
 
 // Tell the producer to stop producing new work after one second
-setTimeout(() => {
+setTimeout(() => {// 定时器，1秒后停止工作
     producer.postMessage({type: "stop"});
     setLogging(true);
     const spinner = document.querySelector(".spinner-border");
@@ -95,7 +97,7 @@ setTimeout(() => {
 
 // Show the main thread isn't blocked
 let ticks = 0;
-(function tick() {
+(function tick() {// 更新tick，显示非阻塞
     const ticker = document.getElementById("ticker");
     if (ticker) {
         ticker.textContent = ++ticks;

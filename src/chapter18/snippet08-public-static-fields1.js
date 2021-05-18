@@ -1,3 +1,4 @@
+// 对外静态属性
 class Thingy {
     static standardThingy = new Thingy("A standard Thingy");
     static anotherStandardThingy = new Thingy("Another standard Thingy");

@@ -1,3 +1,4 @@
+// generator, finally return覆盖指定的返回值
 function* inner() {
     try {
         yield "something";

@@ -1,3 +1,4 @@
+// generator，提前return返回，释放相关资源
 function* example() {
     yield 1;
     yield 2;

@@ -1,3 +1,4 @@
+// method syntax
 const obj2 = {
     name: "Joe",
     say() {

@@ -1,3 +1,4 @@
+// 类型继承
 class Base {
     test() {
         return "Base test";

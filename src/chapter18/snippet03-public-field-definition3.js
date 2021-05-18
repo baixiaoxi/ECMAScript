@@ -1,3 +1,4 @@
+// 对外属性
 // === The snippet:
 
 class Example {

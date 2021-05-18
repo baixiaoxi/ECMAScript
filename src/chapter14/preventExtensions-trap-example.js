@@ -1,3 +1,4 @@
+// 代理。trap定义, preventExtensions
 const obj = {};
 const p = new Proxy(obj, {
     preventExtensions(target) {

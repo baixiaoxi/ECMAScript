@@ -1,3 +1,4 @@
+// Array.flat。只对最上面一级展开
 const original = [
     [1, 2, 3],
     [

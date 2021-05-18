@@ -1,3 +1,4 @@
+// iterable展开
 const num1 = 16;
 const num2 = 50;
 const a = [27, 14, 12, 64];

@@ -1,3 +1,4 @@
+// 计算属性，可以使用表达式
 let counter = 0;
 let obj = {
     [counter++]: counter++,

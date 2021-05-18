@@ -1,3 +1,4 @@
+// 匿名匹配。只能处理12/25/2019这种单一格式
 const usDateRex =
     /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/;
 function parseDate(dateStr) {

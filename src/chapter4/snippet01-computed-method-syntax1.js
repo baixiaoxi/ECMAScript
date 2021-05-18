@@ -1,3 +1,4 @@
+// 函数名通过计算得到
 let name = "foo" + Math.floor(Math.random() * 1000);
 class SomeClass {
     [name]() {

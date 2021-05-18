@@ -1,3 +1,4 @@
+// private fields
 // ==== Start: Code to emulate specification operations ====
 
 // The names of the operations (NewPrivateName, PrivateFieldFind,

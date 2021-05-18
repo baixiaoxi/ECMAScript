@@ -1,3 +1,4 @@
+// dynamic module
 import { log } from "./dynamic-mod-log.js";
 
 log("entry point module top-level evaluation begin");

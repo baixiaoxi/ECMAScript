@@ -1,3 +1,4 @@
+// 私有函数。也是必须在constructor中定义
 class Example {
     #value;
     #x;

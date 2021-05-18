@@ -1,3 +1,4 @@
+// Number.isNaN
 const s = "foo";
 console.log(Number.isNaN(s));   // false: it's a string, not a number
 console.log(isNaN(s));          // true: the global function coerces

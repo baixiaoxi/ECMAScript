@@ -1,3 +1,4 @@
+// ?.操作符
 const some = {
     deeply: {
         nested: {

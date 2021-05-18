@@ -1,3 +1,4 @@
+// let有TDZ节制，不可重复定义
 // Using `let`
 function redundantRepetition() {
     let x = "alpha";

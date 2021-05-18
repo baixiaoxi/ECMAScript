@@ -1,3 +1,4 @@
+// 用Symbol.species来控制构造函数的使用
 class Base {
     constructor(data) {
         this.data = data;

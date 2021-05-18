@@ -1,3 +1,4 @@
+// 字符串遍历。String.split是code unit级别分割，而Array.from是code point级别分割
 // Note: This file is encoded in UTF-8. Your system may or may not have a different default encoding.
 
 const charToHex = ch =>

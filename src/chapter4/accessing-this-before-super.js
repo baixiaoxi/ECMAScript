@@ -1,3 +1,4 @@
+// 只有在super调用后，对象才构造完成。所以只能在super之后使用this
 class Color {
     constructor(r = 0, g = 0, b = 0) {
         this.r = r;

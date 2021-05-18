@@ -1,3 +1,4 @@
+// 数组和可展开对象的连接
 class Example {
     constructor(...entries) {
         this.length = 0;

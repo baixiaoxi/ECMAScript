@@ -1,3 +1,4 @@
+// async-await
 // `reject` using just a string
 function delayedFailure1() {
     return new Promise((resolve, reject) => {

@@ -1,3 +1,4 @@
+// 在对象上实现iterable接口。仅对这个对象起作用
 // Basic iterator example when not using a generator function
 const a = {
     0: "a",

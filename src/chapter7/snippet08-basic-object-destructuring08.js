@@ -1,3 +1,4 @@
+// 对象解构
 // ==== Prep for the snippet:
 
 function getSomeObject() {

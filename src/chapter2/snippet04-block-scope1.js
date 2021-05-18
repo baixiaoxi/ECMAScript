@@ -1,3 +1,4 @@
+// var声明前置，导致变量泄漏，倒处可用
 // Note: The chapter is missing a space in the `console.log` line that's corrected below
 function jumpOut() {
     var a = [1, 2, 3];

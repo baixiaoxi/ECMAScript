@@ -1,3 +1,4 @@
+// 用generator直接作为iterable method
 class LinkedList {
     constructor() {
         this.head = this.tail = null;

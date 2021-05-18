@@ -1,3 +1,4 @@
+// generator，透过next传递数值
 function* example() {
     let x = yield;
     let a = x + 2 + 30;

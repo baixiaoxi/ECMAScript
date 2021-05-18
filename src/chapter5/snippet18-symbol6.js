@@ -1,3 +1,4 @@
+// Symbol基本使用
 const a = Symbol("my symbol");
 console.log(a);         // Symbol(my symbol)
 const b = Symbol("my symbol");

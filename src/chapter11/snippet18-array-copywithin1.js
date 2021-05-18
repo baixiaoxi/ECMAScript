@@ -1,3 +1,4 @@
+// Array.copyWithin，数组内拷贝
 const a = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"];
 console.log("before", a);
 a.copyWithin(2, 8);

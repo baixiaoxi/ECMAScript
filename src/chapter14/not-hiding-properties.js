@@ -1,3 +1,4 @@
+// 用全名规则来定义私有属性。只是规则但并不能强制
 class Counter {
     constructor(name) {
         this._value = 0;

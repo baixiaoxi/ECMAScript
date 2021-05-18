@@ -1,3 +1,4 @@
+// tag function and template literals。用template.raw获取转义前的原始内容
 const createRegex = (template, ...values) => {
     // Build the source from the raw text segments and values
     // (in a later section, you'll see something that can replace

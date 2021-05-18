@@ -1,3 +1,4 @@
+// postMessage传递数据
 let shared;
 let index;
 const updateAndPing = () => {

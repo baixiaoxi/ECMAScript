@@ -1,3 +1,4 @@
+// Relfect.apply调用函数，可个性this绑定
 function example(a, b, c) {
     console.log(`this.name = ${this.name}, a = ${a}, b = ${b}, c = ${c}`);
 }

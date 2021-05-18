@@ -1,3 +1,4 @@
+// 根据提示转换成对应值
 const obj = {
     [Symbol.toPrimitive](hint) {
         const result = hint === "string" ? "str" : 42;

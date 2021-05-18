@@ -1,3 +1,4 @@
+// 对象解构中的默认值
 function getDefault(val) {
     console.log("defaulted to " + val);
     return val;

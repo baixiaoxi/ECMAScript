@@ -1,3 +1,4 @@
+// 兼容两种对象构造方式
 const TwoWays = function TwoWays() {
     if (!new.target) {
         console.log("Called directly; using 'new' instead");

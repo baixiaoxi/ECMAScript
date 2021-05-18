@@ -1,3 +1,4 @@
+// tag function and template literals。使用for循环连接template数组
 const logJSON = (template, ...values) => {
     let result = template[0];
     for (let index = 1; index < template.length; ++index) {

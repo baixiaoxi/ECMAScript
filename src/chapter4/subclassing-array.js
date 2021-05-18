@@ -1,3 +1,4 @@
+// 继承Array
 class Elements extends Array {
     select(source) {
         if (source) {

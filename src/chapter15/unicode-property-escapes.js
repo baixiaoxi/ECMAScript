@@ -1,3 +1,5 @@
+// unicode property escapes
+
 // Note: This file is encoded in UTF-8. Your system may or may not have a different default encoding.
 // If any of the examples below don't work as expected, you may need to tell the environment you're
 // running it in to use UTF-8 when reading the file (or convert the file to your default encoding).

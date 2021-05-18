@@ -1,3 +1,4 @@
+// Symbol用法
 const mySymbol = Symbol();
 const obj = {
     [mySymbol]: 6                   // Computed property name

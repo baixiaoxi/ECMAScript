@@ -1,3 +1,4 @@
+// 对象解构。用括号保护
 // ==== Prep for the snippet:
 
 function getSomeObject() {

@@ -1,3 +1,4 @@
+// 函数参数对象解构
 function example({a, b}) {
     console.log(a, b);
 }

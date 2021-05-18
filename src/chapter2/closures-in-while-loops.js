@@ -1,3 +1,4 @@
+// while每次循环也会创建新的环境对象
 function closuresInWhileLoops() {
     let outside = 1;
     while (outside <= 3) {

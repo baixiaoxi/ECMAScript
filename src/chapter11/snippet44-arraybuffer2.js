@@ -1,3 +1,4 @@
+// 用ArrayBuffer来构造Typed Array
 const buf = new ArrayBuffer(20);
 const a = new Int32Array(buf);
 console.log(buf.byteLength);    // 20 (bytes)

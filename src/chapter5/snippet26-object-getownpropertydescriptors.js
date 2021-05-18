@@ -1,3 +1,4 @@
+// 获取属性描述符
 const s = Symbol("example");
 const o1 = {
     // A property named with a Symbol

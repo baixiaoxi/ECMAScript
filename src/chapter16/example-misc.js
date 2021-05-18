@@ -1,3 +1,4 @@
+// 日志模块
 let logging = true;
 export function log(id, message) {
     if (logging) {

@@ -1,3 +1,4 @@
+// es5用var声明变量
 var list, n, element, text;
 list = document.querySelectorAll("div.foo");
 for (n = 0; n < list.length; ++n) {

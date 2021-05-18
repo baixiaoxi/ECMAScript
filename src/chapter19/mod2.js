@@ -1,3 +1,4 @@
+// 模块导出。注意，用await导出的是promise
 console.log("mod2 evaluation - begin");
 
 // Artificial delay function

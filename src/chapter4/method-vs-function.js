@@ -1,3 +1,5 @@
+// code inside a true method has access to super;
+// code in a triditional function assigned to a property does not
 class SuperClass {
     test() {
         return "SuperClass's test";

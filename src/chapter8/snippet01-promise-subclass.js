@@ -1,3 +1,4 @@
+// 派生promise
 class MyPromise extends Promise {
 }
 const p1 = MyPromise.resolve(42);

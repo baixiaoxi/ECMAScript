@@ -1,3 +1,4 @@
+// Set遍历，遍历顺序是按添加顺序确定的
 const s = new Set(["one", "two", "three"]);
 for (const value of s) {
     console.log(value);

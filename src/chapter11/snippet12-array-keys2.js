@@ -1,3 +1,4 @@
+// Array.keys
 const a = [, "x", , , "y"];
 for (const index of a.keys()) {
     console.log(index, index in a ? "present" : "absent");

@@ -1,3 +1,4 @@
+// Typed Array共用一块ArrayBuffer，不交叉
 const buf = new ArrayBuffer(20);
 const bytes = new Uint8Array(buf, 0, 8);
 const words = new Uint16Array(buf, 8);

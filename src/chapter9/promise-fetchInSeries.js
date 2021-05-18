@@ -1,3 +1,4 @@
+// 构造promise chain，依次执行。这也是async-await的基本原理
 function fetchInSeries(urls) {
     let chain = Promise.resolve([]);
     for (const url of urls) {

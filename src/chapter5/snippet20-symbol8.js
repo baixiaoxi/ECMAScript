@@ -1,3 +1,4 @@
+// global Symbol registry使用方法
 // In the global registry:
 const s = Symbol.for("my-nifty-symbol");
 const key = Symbol.keyFor(s);

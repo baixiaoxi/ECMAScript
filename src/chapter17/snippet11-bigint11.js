@@ -1,3 +1,4 @@
+// 获取BigInt指定位数的数值
 console.log(BigInt.asIntN(16, -20000n));
 // => -20000n
 console.log(BigInt.asUintN(16, 20000n));

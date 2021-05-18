@@ -1,3 +1,4 @@
+// var声明前置，忽略重复定义，易出问题
 // Using `var`
 function redundantRepetition() {
     var x = "alpha";

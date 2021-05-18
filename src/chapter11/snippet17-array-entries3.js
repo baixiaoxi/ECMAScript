@@ -1,3 +1,4 @@
+// Array.entries
 const a = [, undefined, , , "y"];
 for (const [index, value] of a.entries()) {
     console.log(index, value, index in a ? "present" : "absent");

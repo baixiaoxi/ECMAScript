@@ -1,3 +1,4 @@
+// 代理。trap定义，get。改变结果
 const obj = {
     testing: "abc"
 };

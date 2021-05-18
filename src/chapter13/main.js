@@ -1,3 +1,4 @@
+// 引入模块。注意引入的是live and read-only 
 import { counter, increment as inc } from "./mod.js";
 console.log(counter); // 0
 inc();

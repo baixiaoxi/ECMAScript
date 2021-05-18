@@ -1,3 +1,4 @@
+// function declarations in blocks: legacy web semantics
 function branching(num) {
     console.log("num = " + num + ", typeof doSomething = " + typeof doSomething);
     if (num < 0.5) {

@@ -1,3 +1,4 @@
+// with无差别引入对象的属性
 // Loose mode only, since it uses `with`
 const obj = {
     a: 1,

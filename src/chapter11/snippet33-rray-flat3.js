@@ -1,3 +1,4 @@
+// Array.flat。指定展开深度
 const original = [
     "a",
     [

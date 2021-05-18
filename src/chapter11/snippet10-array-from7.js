@@ -1,3 +1,4 @@
+// Array.from构造范围数组
 function rangeArray(start, end, step = 1) {
     return Array.from(
         {length: Math.floor(Math.abs(end - start) / Math.abs(step))},

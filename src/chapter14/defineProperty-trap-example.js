@@ -1,3 +1,4 @@
+// 代理。trap定义defineProperty
 const obj = {};
 const p = new Proxy(obj, {
     defineProperty(target, propName, descriptor) {

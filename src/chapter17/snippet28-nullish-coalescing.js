@@ -1,3 +1,4 @@
+// ?? coalescing操作符。解决||无法判别对象属性值为0的问题
 const obj = {};
 let nextId = 1;
 obj.id = obj.id ?? nextId++;

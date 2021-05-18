@@ -1,3 +1,4 @@
+// 具名匹配
 const usDateRex =
     /^(?<month>\d{1,2})[-\/](?<day>\d{1,2})[-\/](?<year>\d{4})$/;
 const yearFirstDateRex =

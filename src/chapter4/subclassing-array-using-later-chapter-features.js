@@ -1,3 +1,4 @@
+// 继承Array
 class Elements extends Array {
     constructor(arg0, ...rest) {
         const firstType = rest.length === 0 && typeof arg0;

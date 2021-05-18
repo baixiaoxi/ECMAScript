@@ -1,3 +1,4 @@
+// 数组派生。这个时候必须用of或from，没有简化的方式
 class MyArray extends Array {
     niftyMethod() {
         // ...do something nifty...

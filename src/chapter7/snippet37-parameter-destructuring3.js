@@ -1,3 +1,4 @@
+// 函数参数对象解构
 function example(first, {a, b}, last) {
     console.log(first, a, b, last);
 }

@@ -1,3 +1,5 @@
+// 锁和条件
+
 // Lock and Condition are inspired by Lars T. Hansen's work in this github repo:
 // https://github.com/lars-t-hansen/js-lock-and-condition
 // The API of these is not the same as the ones there, but the inner workings are
@@ -13,7 +15,7 @@
  *                                          that offset.
  * @throws  {Error} If any of the requirements aren't met.
  */
-function checkArguments(sab, byteOffset, bytesNeeded) {
+function checkArguments(sab, byteOffset, bytesNeeded) {// 检查共享内存参数是否正确
     if (!(sab instanceof SharedArrayBuffer)) {
         throw new Error("`sab` must be a SharedArrayBuffer");
     }
@@ -36,6 +38,7 @@ function checkArguments(sab, byteOffset, bytesNeeded) {
 // State values used by `Lock` and `Condition`; these MUST be the values 0, 1,
 // and 2 as below or the implementation of `unlock` will fail (the names are
 // just for reading clarity):
+// 锁的三个状态
 const UNLOCKED = 0;     // The lock is unlocked, available to be acquired.
 const LOCKED = 1;       // The lock is locked, and no threads are waiting.
 const CONTENDED = 2;    // The lock is locked, and there may be at least one
@@ -50,6 +53,7 @@ const CONTENDED = 2;    // The lock is locked, and there may be at least one
  * SAB, you must use `Lock.deserialize` to deserialize the object created by
  * `serialize`, **NOT** `new Lock`.
  */
+// 资源锁
 export class Lock {
     // Implementation Notes:
     //
@@ -77,7 +81,7 @@ export class Lock {
         checkArguments(sab, byteOffset, Lock.BYTES_NEEDED);
         this.sharedState = new Int32Array(sab);
         this.index = byteOffset / 4; // byte offset => Int32Array index
-        Atomics.store(this.sharedState, this.index, UNLOCKED);
+        Atomics.store(this.sharedState, this.index, UNLOCKED);// 初始化未上锁
     }
 
     /**
@@ -93,7 +97,7 @@ export class Lock {
      * need to enter a wait state, and the main thread isn't allowed to do that in
      * many environments.
      */
-    lock() {
+    lock() {// 上锁
         const {sharedState, index} = this;
         // Try to get the lock by replacing an existing `UNLOCKED` value with
         // `LOCKED`. `compareExchange` returns the value that was at the given
@@ -107,14 +111,14 @@ export class Lock {
                 );
         // If `c` is `UNLOCKED`, this thread got the lock. If not, loop until
         // it does.
-        while (c !== UNLOCKED) {
+        while (c !== UNLOCKED) {// 之前已经上锁了
             // Wait if `c` is already `CONTENDED` or if this thread's attempt
             // to replace `LOCKED` with `CONTENDED` didn't find that it has
             // been replaced with `UNLOCKED` in the meantime.
             const wait =
-                c === CONTENDED
+                c === CONTENDED// 多个锁竞争
                 ||
-                Atomics.compareExchange(
+                Atomics.compareExchange(// 多锁竞争
                     sharedState,
                     index,
                     LOCKED,     // If the entry contains `LOCKED`,
@@ -123,7 +127,7 @@ export class Lock {
             if (wait) {
                 // Only enter a wait state if the value as of when this thread
                 // starts waiting is `CONTENDED`.
-                Atomics.wait(sharedState, index, CONTENDED);
+                Atomics.wait(sharedState, index, CONTENDED);// 当锁的状态是CONTENDED，进入无限等待状态
             }
             // The thread gets here in one of three ways:
             // 1. It waited and got notified, or
@@ -132,27 +136,27 @@ export class Lock {
             // 3. It tried to wait, but the value that was there when it would
             // have started waiting wasn't `CONTENDED`.
             // Try to replace `UNLOCKED` with `CONTENDED`.
-            c = Atomics.compareExchange(sharedState, index, UNLOCKED, CONTENDED);
+            c = Atomics.compareExchange(sharedState, index, UNLOCKED, CONTENDED);// 被唤醒，看能不能抢到锁
         }
     }
 
     /**
      * Releases the lock.
      */
-    unlock() {
+    unlock() {// 解锁
         const {sharedState, index} = this;
         // Subtract one from the current value in the state and get the old value
         // that was there. This converts `LOCKED` to `UNLOCKED`, or converts
         // `CONTENDED` to `LOCKED` (or if erroneously called when the lock is not
         // locked) converts `UNLOCKED` to `-1`.
-        const value = Atomics.sub(sharedState, index, 1);
+        const value = Atomics.sub(sharedState, index, 1);// 更新锁的状态
         // If the old value was `LOCKED`, we're done; it's `UNLOCKED` now.
-        if (value !== LOCKED) {
+        if (value !== LOCKED) {// 如果原来是CONTENDED，则直接进入UNLOCKED状态
             // The old value wasn't `LOCKED`. Normally this means it was
             // `CONTENDED` and one or more threads may be waiting for the lock to
             // be released. Do so, and notify up to one thread.
             Atomics.store(sharedState, index, UNLOCKED);
-            Atomics.notify(sharedState, index, 1);
+            Atomics.notify(sharedState, index, 1);// 唤醒
             // max number of threads to notify ^
         }
     }
@@ -163,7 +167,7 @@ export class Lock {
      *
      * @returns The object to use with `postMessage`.
      */
-    serialize() {
+    serialize() {// 序列化
         return {
             isLockObject: true,
             sharedState: this.sharedState,
@@ -177,7 +181,7 @@ export class Lock {
      * @param   {object} obj The serialized `Lock` object
      * @returns The `Lock` instance.
      */
-    static deserialize(obj) {
+    static deserialize(obj) {// 反序列化
         if (!obj || !obj.isLockObject ||
             !(obj.sharedState instanceof Int32Array) ||
             typeof obj.index !== "number"
@@ -202,7 +206,7 @@ Lock.BYTES_NEEDED = Int32Array.BYTES_PER_ELEMENT; // Lock uses just one entry
  * condition variable by using `Condition.deserialize` (**NOT** `new Condition`)
  * on the object created by `serialize` to gain access to the condition variable.
  */
-export class Condition {
+export class Condition {// 条件
     /**
      * Creates a `Condition` object that uses the given `Lock` and state
      * information in the given region of the buffer the `Lock` uses. This region
@@ -231,12 +235,12 @@ export class Condition {
      * Unlocks this `Condition`'s `Lock` and waits to be notified of the condition.
      * The calling code must have the lock.
      */
-    wait() {
+    wait() {// 等待
         const {sharedState, index, lock} = this;
         const sequence = Atomics.load(sharedState, index);
-        lock.unlock();
-        Atomics.wait(sharedState, index, sequence);
-        lock.lock();
+        lock.unlock();// 解锁
+        Atomics.wait(sharedState, index, sequence);// 等待
+        lock.lock();// 上锁
     }
 
     /**
@@ -244,7 +248,7 @@ export class Condition {
      * become "true" (whatever meaning that has for a particular condition).
      * The calling code must have the lock.
      */
-    notifyOne() {
+    notifyOne() {// 唤醒一个
         const {sharedState, index} = this;
         Atomics.add(sharedState, index, 1);     // Move the sequence on by one
         Atomics.notify(sharedState, index, 1);  // 1 = notify one thread
@@ -255,7 +259,7 @@ export class Condition {
      * become "true" (whatever meaning that has for a particular condition).
      * The calling code must have the lock.
      */
-    notifyAll() {
+    notifyAll() {// 唤醒所有
         const {sharedState, index} = this;
         Atomics.add(sharedState, index, 1);     // Move the sequence on by one
         Atomics.notify(sharedState, index);     // No 3rd arg = notify all threads
@@ -267,7 +271,7 @@ export class Condition {
      *
      * @returns The object to use with `postMessage`.
      */
-    serialize() {
+    serialize() {// 序列化
         return {
             isConditionObject: true,
             sharedState: this.sharedState,
@@ -282,7 +286,7 @@ export class Condition {
      * @param   {object}    obj The serialized `Condition` object
      * @returns The `Lock` instance.
      */
-    static deserialize(obj) {
+    static deserialize(obj) {// 反序列化
         if (!obj || !obj.isConditionObject ||
             !(obj.sharedState instanceof Int32Array) ||
             typeof obj.index !== "number"

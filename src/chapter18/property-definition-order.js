@@ -1,3 +1,5 @@
+// 属性定义顺序
+
 function logAndReturn(str) {
     console.log(str);
     return str;

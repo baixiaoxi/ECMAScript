@@ -1,3 +1,5 @@
+// postMessage共享transferables。消费者
+
 // This is the `postMessage`+transferables version of example-consumer.js
 
 import {log, setLogging} from "./example-misc.js";
@@ -13,7 +15,7 @@ let fullspeed;
 const a = new Int32Array(new SharedArrayBuffer(Int32Array.BYTES_PER_ELEMENT));
 
 // Calculates the hash for the given buffer.
-function calculateHash(buffer) {
+function calculateHash(buffer) {// 计算哈希
     // A real hash calculation like SHA-256 or even MD5 would take much longer than
     // the below, so after doing the basic XOR hash (which isn't a reliable hash,
     // it's just to keep things simple), this code waits a few milliseconds to
@@ -30,18 +32,18 @@ function calculateHash(buffer) {
 // Handle messages, take appropriate action
 const actions = {
     // Initialize this consumer with data from the message
-    init(data) {
+    init(data) {// 初始化
         ({consumerId, fullspeed} = data);
         setLogging(!fullspeed);
         logId = `consumer${consumerId}`;
         log(logId, "Running");
     },
     // Hash the given buffer
-    hash(data) {
+    hash(data) {// 哈希
         const {buffer, bufferId} = data;
         log(logId, `Hashing buffer ${bufferId}`);
         const hash = calculateHash(buffer);
-        self.postMessage(
+        self.postMessage(// 向主线程发消息
             {type: "hash", hash, consumerId, buffer, bufferId},
             [buffer.buffer] // Transfer the underlying `ArrayBuffer` back to main
         );

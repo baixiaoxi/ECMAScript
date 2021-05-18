@@ -1,3 +1,4 @@
+// WeakMap的value对象引用key不会导致key无法回收
 function log(msg) {
     const p = document.createElement("pre");
     p.appendChild(document.createTextNode(msg));

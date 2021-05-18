@@ -1,3 +1,4 @@
+// 匿名匹配
 // Not a "new toy," just sets up the example for the next snippet using a named capture group
 const rex = /testing (\d+)/g;
 const result = rex.exec("This is a test: testing 123 testing");

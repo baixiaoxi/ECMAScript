@@ -1,3 +1,4 @@
+// async-await。es5老式构造async iterator
 function fetchInSeries([...urls]) {
     const asyncIteratorPrototype =
         Object.getPrototypeOf(

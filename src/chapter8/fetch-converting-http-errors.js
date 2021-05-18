@@ -1,3 +1,4 @@
+// promise封装
 class FetchError extends Error {
     constructor(response, message = "HTTP error " + response.status) {
         super(message);

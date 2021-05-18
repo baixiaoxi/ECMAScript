@@ -1,3 +1,4 @@
+// 抽象类。通过new.target来判断，实际还是可以用Object.create绕过的
 class Shape {
     constructor(color) {
         if (new.target === Shape) {

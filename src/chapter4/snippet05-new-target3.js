@@ -1,3 +1,4 @@
+// new.target指向的是调用super的构造函数名，也就是原始调用处的构造函数名
 class Base {
     constructor() {
         console.log(new.target.name);

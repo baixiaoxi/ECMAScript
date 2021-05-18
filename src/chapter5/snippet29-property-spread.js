@@ -1,3 +1,4 @@
+// property spread展开
 // ==== Prep for the snippet:
 
 const defaultOptions = {

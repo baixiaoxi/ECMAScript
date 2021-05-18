@@ -1,3 +1,4 @@
+// __proto__不可以是字符串
 const p = {
     hi() {
         console.log("hi");

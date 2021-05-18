@@ -1,3 +1,4 @@
+// arrow function, 不是constructor，没有prototype
 function traditional() {
 }
 const arrow = () => {

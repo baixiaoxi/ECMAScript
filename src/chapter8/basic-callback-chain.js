@@ -1,3 +1,4 @@
+// callback模式，导致callback hell现象
 function worker(label, callback) {
     setTimeout(() => {
         if (Math.random() < 0.2) {

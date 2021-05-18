@@ -1,3 +1,4 @@
+// Typed Array数值转换，Modulo
 const value = -25;
 const max = 256;
 const negative = value < 0;

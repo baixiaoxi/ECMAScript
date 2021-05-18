@@ -1,3 +1,4 @@
+// generator，调用throw语句
 function* example() {
     yield 1;
     yield 2;

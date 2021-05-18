@@ -1,3 +1,4 @@
+// 具名匹配。indices除了各匹配项索引信息，还有groups对应具名匹配的索引信息
 const rex = /(?<word>\w+) (?<num>\d+)/;
 const str = "==> Testing 123";
 const match = rex.exec(str);

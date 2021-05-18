@@ -1,3 +1,4 @@
+// 代理。目标类型和常用trap定义，隐藏数据属性。代理函数并缓存，并使用实际的target访问私有属性。防止代理介入，阻止私有属性的访问
 class Counter {
     constructor(name) {
         this._value = 0;
@@ -22,7 +23,7 @@ function getCounter(name) {
             if (typeof value === "function") {
                 let funcProxy = functionProxies.get(value);
                 if (!funcProxy) {
-                    funcProxy = new Proxy(value, {
+                    funcProxy = new Proxy(value, {// 即使这样处理，也无法确保访问正确。比如，1.代理外面再套层代理; 2.将代理整体作为其他对象的prototype; 3.直接从代理对象的prototype中获取函数，再通过代理访问
                         apply(funcTarget, thisValue, args) {
                             const t = thisValue === p ? target : thisValue;
                             return Reflect.apply(funcTarget, t, args);

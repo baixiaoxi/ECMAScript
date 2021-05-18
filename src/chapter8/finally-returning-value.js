@@ -1,3 +1,7 @@
+// finally无法改变promise chain上的fulfillment的值。 不能有一般的返回值，有也被忽略。
+// 若返回promise/thenable，则chain后面的语句需要等待promise/thenable settled
+// 若返回rejects，则会替换chain上的fulfillment或修改rejects的原因
+
 // Function returning promise that is fulfilled after the given
 // delay with the given value
 function returnWithDelay(value, delay = 10) {

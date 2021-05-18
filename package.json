@@ -1,16 +1,29 @@
 {
   "name": "ecmascript",
   "version": "1.0.0",
-  "description": "",
+  "description": "Some ECMAScript code snippet",
   "main": "index.js",
-  "scripts": {
-    "build": "babel src -d lib"
+  "directories": {
+    "js": "js"
   },
-  "author": "baixiaoxi",
-  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.13.16",
     "@babel/core": "^7.14.0",
     "@babel/preset-env": "^7.14.1"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baixiaoxi/ECMAScript.git"
+  },
+  "keywords": [],
+  "author": "baixiaoxi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/baixiaoxi/ECMAScript/issues"
+  },
+  "homepage": "https://github.com/baixiaoxi/ECMAScript#readme"
 }

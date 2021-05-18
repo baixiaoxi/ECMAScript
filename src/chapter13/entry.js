@@ -1,3 +1,4 @@
+// module入口
 import { fn1 } from "./mod1.js";
 import def, { fn2 } from "./mod2.js";
 

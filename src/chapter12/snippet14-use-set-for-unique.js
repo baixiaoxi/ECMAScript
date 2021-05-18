@@ -1,3 +1,4 @@
+// 用Set来剔除重复元素
 const a1 = [1, 2, 3, 4, 1, 2, 3, 4];
 const a2 = Array.from(new Set(a1));
 console.log(a2.length);     // 4

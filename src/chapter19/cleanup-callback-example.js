@@ -1,3 +1,4 @@
+// cleanup callback。回收回调
 let stop = false;
 const registry = new FinalizationRegistry(heldValue => {
     console.log(`Object for '${heldValue}' has been reclaimed`);

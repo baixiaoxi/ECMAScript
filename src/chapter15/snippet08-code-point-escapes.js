@@ -1,3 +1,4 @@
+// /u开启unicode的code point匹配
 // Note: This file is encoded in UTF-8. Your system may or may not have a different default encoding.
 
 const rex = /\u{1F60A}/u;

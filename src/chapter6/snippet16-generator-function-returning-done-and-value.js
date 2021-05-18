@@ -1,3 +1,4 @@
+// generator，return返回
 function* example() {
     yield 1;
     yield 2;

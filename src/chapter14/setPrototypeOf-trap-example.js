@@ -1,3 +1,4 @@
+// 代理。trap定义，setPrototypeOf
 const obj = {foo: 42};
 const p = new Proxy(obj, {
     setPrototypeOf(target, newProto) {

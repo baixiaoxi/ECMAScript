@@ -1,3 +1,4 @@
+// 函数参数长度，第一个默认参数及之后的参数不计入在内
 function none() {
 }
 console.log(none.length);           // 0

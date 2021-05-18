@@ -1,3 +1,4 @@
+// 代理。访问accessor属性
 const obj = {
     testing: "abc"
 };

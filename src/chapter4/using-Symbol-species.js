@@ -1,3 +1,4 @@
+// 由Symbol.species来控制使用的构造函数，方便子类一次性覆盖
 class Base {
     constructor(data) {
         this.data = data;

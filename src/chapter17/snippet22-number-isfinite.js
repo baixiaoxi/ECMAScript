@@ -1,3 +1,4 @@
+// Number.isFinite
 const s = "42";
 console.log(Number.isFinite(s));        // false: it's a string, not a number
 console.log(isFinite(s));               // true: the global function coerces

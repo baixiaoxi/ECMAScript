@@ -1,3 +1,4 @@
+// postMessage共享transferables，但对象是独立的
 const sharedBuf = new SharedArrayBuffer(5 * Uint16Array.BYTES_PER_ELEMENT);
 const sharedArray = new Uint16Array(sharedBuf);
 sharedArray[0] = 42;

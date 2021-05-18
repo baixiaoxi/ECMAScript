@@ -1,3 +1,4 @@
+// String.length是code unit的长度
 // Note: This file is encoded in UTF-8. Your system may or may not have a different default encoding.
 
 console.log("a".length); // 1

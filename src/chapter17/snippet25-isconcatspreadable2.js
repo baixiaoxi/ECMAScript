@@ -1,3 +1,4 @@
+// 数组和对象的连接
 const a = ["one", "two"];
 const obj = {
     0: "four",

@@ -1,3 +1,4 @@
+// codePointAt的参数是code unit级别的
 // Note: This file is encoded in UTF-8. Your system may or may not have a different default encoding.
 
 console.log("😊".codePointAt(0).toString(16).toUpperCase()); // 1F60A

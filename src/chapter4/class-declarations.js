@@ -1,3 +1,4 @@
+// 类型声明
 // Trying to use `TheClass` here would result in a ReferenceError
 // because of the Temporal Dead Zone
 

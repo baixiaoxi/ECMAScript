@@ -1,3 +1,4 @@
+// 显示调用iterator.return，早点返回，主动释放相关资源
 const a = ["a", "b", "c", "d"];
 const it = a[Symbol.iterator]();
 let result;

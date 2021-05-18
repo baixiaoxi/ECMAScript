@@ -1,3 +1,4 @@
+// Object.assign使用，不包括的属性有：继承来的，非enumerable的，null, undefined, 
 // ==== Prep for the snippet:
 
 const defaultOptions = {

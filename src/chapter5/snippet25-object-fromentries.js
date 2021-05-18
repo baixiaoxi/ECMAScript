@@ -1,3 +1,4 @@
+// Object.fromEtnries使用
 const obj = Object.fromEntries([
     ["a", 1],
     ["b", 2],

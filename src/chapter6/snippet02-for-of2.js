@@ -1,3 +1,4 @@
+// for-in遍历键，for-of遍历值
 const a = ["a", "b", "c"];
 a.extra = "extra property";
 for (const value of a) {

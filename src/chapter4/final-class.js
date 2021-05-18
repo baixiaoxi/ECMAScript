@@ -1,3 +1,4 @@
+// Final类型，禁止继承使用
 class Thingy {
     constructor() {
         if (new.target !== Thingy) {

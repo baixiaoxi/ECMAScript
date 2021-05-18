@@ -1,3 +1,4 @@
+// 剩余参数数组，可直接遍历
 // In a later chapter you'll learn about the `for-of` loop, which you'd probably
 // want here instead of `forEach`. But you'll also learn about `Object.assign`,
 // which you could use instead of this entire function.

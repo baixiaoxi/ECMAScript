@@ -1,3 +1,5 @@
+// 用WeakSet来实现数据私有化
+
 const Example = (() => {
     const privateMap = new WeakMap();
 

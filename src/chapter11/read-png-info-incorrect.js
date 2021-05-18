@@ -1,3 +1,4 @@
+// 读取png数据。getUint32大端读取，较验数据
 const PNG_HEADER_1 = 0x89504E47; // Big-endian first Uint32 of PNG header
 const PNG_HEADER_2 = 0x0D0A1A0A; // Big-endian second Uint32 of PNG header
 const TYPE_IHDR = 0x49484452;    // Big-endian type of IHDR chunk

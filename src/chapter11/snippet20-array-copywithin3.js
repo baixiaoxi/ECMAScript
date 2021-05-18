@@ -1,3 +1,4 @@
+// Array.copyWithin，数组内拷贝，undefined也被拷贝
 function arrayString(a) {
     return Array.from(a.keys(), key => {
         return key in a ? a[key] : "*gap*";

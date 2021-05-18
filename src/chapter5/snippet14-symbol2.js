@@ -1,3 +1,4 @@
+// Symbol.toStringTag字符串格式化
 // Direct usage
 const obj1 = {
     [Symbol.toStringTag]: "Nifty"

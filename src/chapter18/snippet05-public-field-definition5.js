@@ -1,3 +1,4 @@
+// 对外属性。默认可遍历，可读写
 class Example {
     field;
 }

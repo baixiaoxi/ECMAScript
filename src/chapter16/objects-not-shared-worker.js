@@ -1,3 +1,4 @@
+// 监听postMessage消息
 this.addEventListener("message", e => {
     if (e.data && e.data.type === "init") {
         let {sharedArray} = e.data;

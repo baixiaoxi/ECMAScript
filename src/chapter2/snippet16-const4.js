@@ -1,3 +1,4 @@
+// 常量引用不可变，内容可变
 const obj = {
     value: "before"
 };

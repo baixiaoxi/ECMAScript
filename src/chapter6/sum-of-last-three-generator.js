@@ -1,3 +1,4 @@
+// genertor，通过next传递数值
 function* sumThree() {
     const lastThree = [];
     let sum = 0;

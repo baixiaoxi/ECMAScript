@@ -1,3 +1,4 @@
+// generator method。
 // Basic iterator example on a class when not using a generator function
 class LinkedList {
     constructor() {
@@ -19,7 +20,7 @@ class LinkedList {
             Object.getPrototypeOf([][Symbol.iterator]())
         );
         const it = Object.assign(Object.create(itPrototype), {
-            next() {
+            next() {// 不使用this, 可以不用arrow function
                 if (current) {
                     const value = current.value;
                     current = current.next;

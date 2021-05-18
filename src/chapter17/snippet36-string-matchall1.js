@@ -1,3 +1,4 @@
+// 正则表达式，每次循环都会改变状态值，比如lastIndex
 const s = "Testing 1 2 3";
 const rex = /\d/g;
 let m;

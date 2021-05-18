@@ -1,3 +1,4 @@
+// tagged template literals
 function example(template, value0, value1, value2) {
     console.log(template);
     console.log(value0, value1, value2);

@@ -1,3 +1,4 @@
+// Map派生
 class MyMap extends Map {
     filter(predicate, thisArg) {
         const newMap = new (this.constructor[Symbol.species] || MyMap)();

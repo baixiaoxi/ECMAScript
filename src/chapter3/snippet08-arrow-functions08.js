@@ -1,3 +1,4 @@
+// arrow function，没有自己的this变量
 function Thingy(value) {
     this.value = value;
     this.showDelay = 100;

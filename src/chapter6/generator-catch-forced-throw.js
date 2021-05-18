@@ -1,3 +1,4 @@
+// generator, 过程中throw异常，try-catch可以捕获。因为没有return，所以最后返回的是undefined值
 function* example() {
     let n = 0;
     try {

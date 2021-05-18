@@ -1,3 +1,4 @@
+// trailing commas，参数可带额外逗号
 function example(
     question,   // (string) The question, must end with a question mark
     answer,     // (string) The answer, must end with appropriate punctuation

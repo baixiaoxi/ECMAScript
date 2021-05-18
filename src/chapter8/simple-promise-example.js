@@ -1,3 +1,4 @@
+// promise chain
 function example() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {

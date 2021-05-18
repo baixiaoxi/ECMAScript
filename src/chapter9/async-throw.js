@@ -1,3 +1,4 @@
+// async-await。throw可抛任意值，赞同于promise.reject
 function delay(ms, value) {
     return new Promise(resolve => setTimeout(resolve, ms, value));
 }

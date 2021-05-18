@@ -1,3 +1,4 @@
+// 代理。trap定义getPrototypeOf
 const proto = {
     testing: "one two three"
 };

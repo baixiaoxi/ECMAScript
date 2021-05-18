@@ -1,3 +1,4 @@
+// generator, 主动调用return返回
 function* foo(n) {
     try {
         while (true) {

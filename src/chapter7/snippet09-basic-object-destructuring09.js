@@ -1,3 +1,4 @@
+// 对象解构。如果是赋值语句模式，需要用括号括起，防止误认为是block定义
 // ==== Prep for the snippet:
 
 function getSomeObject() {

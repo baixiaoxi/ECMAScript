@@ -1,3 +1,4 @@
+// async-await
 async function fetchInSeries(urls) {
     const results = [];
     for (const url of urls) {

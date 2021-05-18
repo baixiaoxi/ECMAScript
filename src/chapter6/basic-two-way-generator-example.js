@@ -1,3 +1,4 @@
+// generator，透过next传值给yield语句
 function* add() {
     console.log("starting");
     const value1 = yield "Please provide value 1";

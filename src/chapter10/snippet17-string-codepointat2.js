@@ -1,3 +1,4 @@
+// codePointAt是code unit级别的，注意处理是否surrogate pair的trail part
 // Note: This file is encoded in UTF-8. Your system may or may not have a different default encoding.
 
 const charToHex = (str, i) =>

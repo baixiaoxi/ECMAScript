@@ -1,3 +1,4 @@
+// 代理。trap定义deleteProperty
 const obj = {value: 42};
 const p = new Proxy(obj, {
     deleteProperty(target, propName, descriptor) {

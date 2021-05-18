@@ -1,3 +1,4 @@
+// WeapMap基本使用
 (async() => {
     const statusDisplay = document.getElementById("status");
     const personDisplay = document.getElementById("person");

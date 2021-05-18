@@ -1,3 +1,4 @@
+// 静态函数
 class Color {
     constructor(r = 0, g = 0, b = 0) {
         this.r = r;
@@ -34,6 +35,7 @@ class Color {
         );
     }
 
+    // 静态函数
     static fromCSS(css) {
         const match = /^#?([0-9a-f]{3}|[0-9a-f]{6});?$/i.exec(css);
         if (!match) {
@@ -43,7 +45,7 @@ class Color {
         if (vals.length === 3) {
             vals = vals[0] + vals[0] + vals[1] + vals[1] + vals[2] + vals[2];
         }
-        return new this(
+        return new this(// 由调用方确定构造函数
             parseInt(vals.substring(0, 2), 16),
             parseInt(vals.substring(2, 4), 16),
             parseInt(vals.substring(4, 6), 16)

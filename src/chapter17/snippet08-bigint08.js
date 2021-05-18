@@ -1,3 +1,4 @@
+// 检查BigInt能否正确转到Number类型
 // Note: This version of `toNumber` differs slightly from Chapter 17's version, it's
 // probably better to use TypeError and RangeError than to just use Error, and if
 // requiring a BigInt, best to be proactive with that check.

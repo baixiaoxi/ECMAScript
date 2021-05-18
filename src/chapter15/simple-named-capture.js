@@ -1,3 +1,4 @@
+// 普通具名正则表达式。可用grups提取匹配值
 const rex = /testing (?<number>\d+)/g;
 const result = rex.exec("This is a test: testing 123 testing");
 console.log(result[0]);     // testing 123

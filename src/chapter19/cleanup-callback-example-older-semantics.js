@@ -1,3 +1,4 @@
+// cleanup callback。用FinalizationRegistry注册对象回收回调。注意，回调有可能永远不会被调用
 let stop = false;
 // The old name for `FinalizationRegistry` was `FinalizationGroup`
 const ctor = typeof FinalizationRegistry === "undefined"
@@ -21,7 +22,7 @@ const registry = new ctor(arg => {
 const firstSize = 100000000;
 console.log(`main:    Allocating ${firstSize} bytes of data to hold weakly...`);
 let data = new ArrayBuffer(firstSize);
-registry.register(data, "data", data);
+registry.register(data, "data", data);// 注册回调
 data = null; // Releases the reference
 let moreData = [];
 let counter = 0;

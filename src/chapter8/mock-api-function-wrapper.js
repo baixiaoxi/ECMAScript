@@ -1,3 +1,4 @@
+// 构造promise
 function promiseSomething(options = {}) {
     return new Promise((resolve, reject) => {
         doSomething({

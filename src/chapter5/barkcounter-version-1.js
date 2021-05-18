@@ -1,3 +1,4 @@
+// 拥有相同的Symbol属性，拷贝该属性
 const BarkCounter = (() => {
     const barks = Symbol("nifty-barks");
 

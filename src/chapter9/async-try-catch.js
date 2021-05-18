@@ -1,3 +1,4 @@
+// async-await。try-catch捕获异常
 function delayedFailure() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {

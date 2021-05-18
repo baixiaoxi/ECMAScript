@@ -1,3 +1,4 @@
+// Symbol.unscopables指定不引入的属性。新增加的属性，比如keys，不会影响到老的代码
 // Loose mode only, since it uses `with`
 const obj = {
     a: 1,

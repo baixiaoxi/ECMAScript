@@ -1,3 +1,4 @@
+// TypedArray.subarray构造新的数组，但是底层ArrayBuffer是共用的
 const wholeArray = Uint8Array.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
 const firstHalf = wholeArray.subarray(0, 5);
 console.log(wholeArray);    // Uint8Array [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]

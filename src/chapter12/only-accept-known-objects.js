@@ -1,3 +1,4 @@
+// 用WeakSet来实现数据私有化，验证对象是否伪造
 const Thingy = (() => {
     const known = new WeakSet();
     let nextId = 1;

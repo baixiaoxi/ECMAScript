@@ -1,3 +1,4 @@
+// Array.includes
 const a = ["one", "two", "three"];
 console.log(a.includes("two"));     // true
 console.log(a.includes("four"));    // false

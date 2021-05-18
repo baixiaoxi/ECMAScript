@@ -1,3 +1,4 @@
+// 用babel工具转成es5兼容模式
 "use strict";
 
 var obj = {

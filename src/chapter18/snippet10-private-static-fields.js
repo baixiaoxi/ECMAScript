@@ -1,3 +1,4 @@
+// 私有静态属性
 class Example {
     static #cache = new WeakMap();
 

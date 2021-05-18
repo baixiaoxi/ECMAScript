@@ -1,3 +1,4 @@
+// Set派生
 class MySet extends Set {
     addAll(iterable) {
         for (const value of iterable) {

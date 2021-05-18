@@ -1,3 +1,4 @@
+// 差不多所有值都可以作为键，除了+-0等特殊存在
 const key = -0;
 console.log(key);               // -0
 const m = new Map();

@@ -1,3 +1,4 @@
+// 类型表达式
 let name = "foo" + Math.floor(Math.random() * 1000);
 
 // The expression

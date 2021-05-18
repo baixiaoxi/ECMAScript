@@ -1,3 +1,4 @@
+// let声明的全局变量，不是global object的属性
 // REMINDER: If you're running this in Node.js, you have to use
 //      node < filename
 // (note the `<` redirection), not just the usual `node filename`. This example

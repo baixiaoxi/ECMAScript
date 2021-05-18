@@ -1,3 +1,4 @@
+// 计算函数
 const s = "ple";
 const obj = {
     "biz-baz"() {       // String literal method name

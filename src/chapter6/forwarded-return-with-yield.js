@@ -1,3 +1,4 @@
+// generator, outer调用return并传值，会导致从最里层generator函数开始逐级返回。注意，返回值会保留到finally语块
 function* inner() {
     try {
         let n = 0;

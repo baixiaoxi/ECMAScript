@@ -1,3 +1,4 @@
+// String.padStart/padEnd
 const s = "example";
 console.log(`|${s.padStart(10)}|`);
 // => "|    example|"

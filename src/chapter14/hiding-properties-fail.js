@@ -1,3 +1,4 @@
+// 代理。目标类型和常用trap定义，隐藏数据属性。代理函数并缓存，并使用实际的target访问私有属性。防止代理介入，阻止私有属性的访问
 class Counter {
     constructor(name) {
         this._value = 0;

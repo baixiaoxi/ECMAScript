@@ -1,3 +1,4 @@
+// Symbol.toStringTag字符串格式化
 class Example1 {
 }
 class Example2 {

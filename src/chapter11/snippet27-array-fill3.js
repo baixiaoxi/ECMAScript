@@ -1,3 +1,4 @@
+// 构造数组，用map返回独立的对象
 // You probably wouldn't use `Array.prototype.fill` if you wanted to fill an array
 // with discrete objects, you'd use `Array.from`, like this:
 const a = Array.from({length: 2}, () => ({}));

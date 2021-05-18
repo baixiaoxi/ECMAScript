@@ -1,3 +1,4 @@
+// WeakRef弱引用
 const firstSize = 100000000;
 console.log(`main:    Allocating ${firstSize} bytes of data to hold weakly...`);
 let data = new ArrayBuffer(firstSize);

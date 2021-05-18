@@ -1,3 +1,4 @@
+// Typed Array数值转换。undefined转成0
 // Using `of`:
 const a2 = Int8Array.of(1, 2, "3");
 console.log(a2);    // Int8Array(3): [1, 2, 3] -- "3" was converted to 3

@@ -1,3 +1,4 @@
+// 给老版本的js引擎的NodeList和HTMLCollection添加forEach实现
 ;(function() {
     if (Object.defineProperty) {
         var iterator = typeof Symbol !== "undefined" &&

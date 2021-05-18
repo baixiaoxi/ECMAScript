@@ -1,3 +1,4 @@
+// matchAll结合name capture和object destructuring使代码清晰易懂
 const s = "Testing a-1, b-2, c-3";
 for (const {index, groups: {type, num}} of s.matchAll(/(?<type>\w)-(?<num>\d)/g)) {
     console.log(`"${type}": "${num}" at ${index}`);

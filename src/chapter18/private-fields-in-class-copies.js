@@ -1,3 +1,4 @@
+// private fields。类型每次执行过后都会创建一个新的私有环境对象，私有属性名是不一样的。这就导致下面的Counter1和Counter2的私有环境对象不一致，访问出错
 function makeCounterClass() {
     return class Counter {
         #value;

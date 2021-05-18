@@ -1,3 +1,4 @@
+// async-await。next传值，跳过元素
 async function* fetchInSeries([...urls]) {
     let skipNext = false;
     for (const url of urls) {

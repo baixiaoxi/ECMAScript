@@ -1,3 +1,4 @@
+// 新的js语法
 var obj = {
     rex: /\d/,
     checkArray: function(array) {

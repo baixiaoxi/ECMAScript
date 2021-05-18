@@ -1,3 +1,5 @@
+// promise与callback交互
+
 // The "API function"
 const noop = () => {}; // A function that does nothing
 /* Does something.
@@ -43,7 +45,7 @@ function promiseSomething(options = {}) {
 
 // Using it
 promiseSomething({data: "example"})
-    .then(({result, status}) => {
+    .then(({result, status}) => {// 用到了object destructure
         console.log("Got:", result, status);
     })
     .catch(error => {

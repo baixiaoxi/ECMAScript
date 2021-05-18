@@ -1,3 +1,4 @@
+// computed property
 var name = "answer";
 var obj = {
     [name] : 42

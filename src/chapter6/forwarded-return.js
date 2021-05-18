@@ -1,3 +1,4 @@
+// generator, 对outer调用return后，通过outer的finally返回最后的值
 function* inner() {
     try {
         let n = 0;

@@ -1,3 +1,4 @@
+// var声明提前
 function example() {
     console.log(answer); // undefined
     answer = 42;
